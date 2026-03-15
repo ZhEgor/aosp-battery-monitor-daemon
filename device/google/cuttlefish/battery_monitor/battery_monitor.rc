@@ -1,0 +1,4 @@
+service battery_monitor /vendor/bin/battery_monitor_service
+    class hal
+    user system
+    group system

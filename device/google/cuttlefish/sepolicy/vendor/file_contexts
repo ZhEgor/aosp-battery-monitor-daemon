@@ -1,0 +1,1 @@
+/vendor/bin/battery_monitor_service u:object_r:battery_monitor_exec:s0

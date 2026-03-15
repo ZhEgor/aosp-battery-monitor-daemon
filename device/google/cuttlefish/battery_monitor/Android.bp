@@ -1,0 +1,12 @@
+cc_binary {
+    name: "battery_monitor_service",
+    srcs: ["main.cpp"],
+    vendor: true, // Forces binary and dependencies into /vendor
+    shared_libs: [
+        "libbase",
+        "liblog",
+        "libbinder_ndk",
+        "android.hardware.health-V3-ndk",
+    ],
+    init_rc: ["battery_monitor.rc"],
+}

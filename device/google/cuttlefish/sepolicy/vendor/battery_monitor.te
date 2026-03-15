@@ -1,0 +1,16 @@
+type battery_monitor, domain;
+type battery_monitor_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(battery_monitor)
+
+# THE FIX: Add these to allow the binder handshake
+hal_client_domain(battery_monitor, hal_health)
+binder_use(battery_monitor)
+binder_call(battery_monitor, servicemanager)
+
+# Permission to find the service manager
+allow battery_monitor servicemanager:service_manager list;
+allow battery_monitor hal_health_service:service_manager find;
+
+# Logging
+allow battery_monitor logdw_socket:sock_file write;
+allow battery_monitor logd:unix_dgram_socket sendto;
